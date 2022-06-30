@@ -1,16 +1,23 @@
 package Spring.Core.Order;
 
+import Spring.Core.AppConfig;
 import Spring.Core.member.Grade;
 import Spring.Core.member.Member;
 import Spring.Core.member.MemberService;
 import Spring.Core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
     MemberService memberService;
     OrderService orderService;
-
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
     @Test
     void createOrder(){
         long memberId = 1L;
